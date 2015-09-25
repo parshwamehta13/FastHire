@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	{% load staticfiles %}
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Panel | {{user.username}}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'companies/css/bootstrap.min.css' %}" >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'companies/css/database.css' %}">
+</head>
+<body>
+	 <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'listCompanies' %}">{{user.username}}</a>
+        <a class="navbar-brand" href="{% url 'recruiterPanel' %}">Your Panel</a>
+       	<a class="navbar-brand" href="/logout">Logout</a>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container-fluid">
+	<h2>Table of CV submitted by you</h2>
+		<table class="table table-hover">
+			<tr>
+				<th>Name</th>
+				<th>Current Comapany</th>
+				<th>Current Salary</th>
+				<th>Email Id</th>
+				<th>Mobile No.</th>
+				<th>Resume</th>
+				<th>Company Applied</th>
+				<th>Position</th>
+			</tr>
+			{% for i in resumeList %}
+			<tr>
+				<td>{{i.name_applicant}}</td>
+				<td>{{i.current_company}}</td>
+				<td>{{i.current_salary}}</td>
+				<td>{{i.emailid}}</td>
+				<td>{{i.mobile}}</td>
+				<td>{{i.resume}}</td>
+				<td>{{i.company_applied}}</td>
+				<td>{{i.position_applied}}</td>
+			</tr>
+			{%endfor%}
+		</table>
+	
+
+	<a href="{% url 'listCompanies'%}"> <button type="button" class="btn btn-default btn-lg">Back</button> </a>
+	</div>	
+	
+</body>
+</html>

@@ -1,0 +1,123 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Job openings</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'companies/css/bootstrap.min.css' %}" >
+
+	<link rel="stylesheet" type="text/css" href="{% static 'companies/css/database.css' %}">
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">{{user.username}}</a>
+        <a class="navbar-brand" href="{% url 'recruiterPanel' %}">Your Panel</a>
+       	<a class="navbar-brand" href="/logout">Logout</a>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+<!-- Content -->
+<div class="container-fluid">
+  	<div class="row">
+      <div class="col-sm-2">
+          <ul id="sidebar" class="nav nav-stacked affix">
+            <form action="" method="get">
+				<ul>
+					<li><input type="text" name="q" placeholder='Search...'></li>
+					<li>Location:</li>
+					<ul>
+					{% for i in location_list %}
+					<li><input type="checkbox" name="{{i}}" value="{{i}}"> {{i}}</li>
+					{% endfor %}
+					</ul>
+					<li><input type="submit" value="Submit"></li>
+				</ul>
+   			</form>
+        </ul>
+      </div>
+      <div class="col-sm-10">
+      	<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Salary</th>
+        <th>Work Experience</th>
+        <th>Location</th>
+        <th>Vacancies</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{%for item in company_list%}
+    	<tr>
+	    	<td>{{item.job_title}}</td>
+	    	<td>{{item.name}}</td>
+	    	<td>{{item.salary}}</td>
+	    	<td>{{item.work_exp}}</td>
+	    	<td>{{item.location}}</td>
+	    	<td>{{item.vacancies}}</td>
+	    	<td><a href="{% url 'apply' item.id %}"><button type="button" class="btn btn-info">Apply Now</button></td>
+	    </tr>
+	    {%endfor%}
+	    {%for item in company_list%}
+    	<tr>
+	    	<td>{{item.job_title}}</td>
+	    	<td>{{item.name}}</td>
+	    	<td>{{item.salary}}</td>
+	    	<td>{{item.work_exp}}</td>
+	    	<td>{{item.location}}</td>
+	    	<td>{{item.vacancies}}</td>
+	    	<td><a href="{% url 'apply' item.id %}"><button type="button" class="btn btn-info">Apply Now</button></td>
+	    </tr>
+	    {%endfor%}
+
+	    {%for item in company_list%}
+    	<tr>
+	    	<td>{{item.job_title}}</td>
+	    	<td>{{item.name}}</td>
+	    	<td>{{item.salary}}</td>
+	    	<td>{{item.work_exp}}</td>
+	    	<td>{{item.location}}</td>
+	    	<td>{{item.vacancies}}</td>
+	    	<td><a href="{% url 'apply' item.id %}"><button type="button" class="btn btn-info">Apply Now</button></td>
+	    </tr>
+	    {%endfor%}
+
+	    {%for item in company_list%}
+    	<tr>
+	    	<td>{{item.job_title}}</td>
+	    	<td>{{item.name}}</td>
+	    	<td>{{item.salary}}</td>
+	    	<td>{{item.work_exp}}</td>
+	    	<td>{{item.location}}</td>
+	    	<td>{{item.vacancies}}</td>
+	    	<td><a href="{% url 'apply' item.id %}"><button type="button" class="btn btn-info">Apply Now</button></td>
+	    </tr>
+	    {%endfor%}
+
+
+    </tbody>
+  </table>
+      </div>
+</div>
+<!-- jQuery -->
+    <script src="{% static 'companies/js/jquery.js' %}" ></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'companies/js/bootstrap.min.js' %}" ></script>
+</body>
+</html>

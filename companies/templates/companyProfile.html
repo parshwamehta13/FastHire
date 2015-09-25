@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>{{item.name}}</title>
+</head>
+<body>
+		<a href="/logout">Logout</a>
+		<ul>
+			<li>{{item.job_profile}}</li>	
+			<li>{{item.name}}</li>
+			<li>Salary - {{item.salary}}</li>
+			<li>Work Experience Required: {{item.work_exp}}</li>
+			<li>Minimum Requirement: {{item.job_requirements}}
+		</ul>
+
+		<h2><a href="{%url 'apply' item.id%}">Upload a new CV ...</a></h2>
+		<!-- <form action="" method="POST">
+		{% csrf_token %}
+			<ul>
+				<li>Name: <input type="text" name="name_applicant" required></li>
+				<li>Email: <input type="text" name="email_applicant" required></li>
+				<li>Mobile No: <input type="text" name="mobile_applicant" required></li>
+				<li>Current Company: <input type="text" name="current_applicant_company" required></li>
+				<li>Current Salary: <input type="text" name="current_applicant_salary" required></li>
+				<li>CV: <input type="text" name="cv_applicant" required></li>
+				<li> <input type="submit" value="Submit CV"/></li>
+			</ul>
+		</form> -->
+</body>
+</html>
